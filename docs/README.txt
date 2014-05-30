@@ -1,0 +1,1 @@
+Onde serão organizados os artefatos que não se relacionam ao software em si, mas a documentação, especificação e outros documentos (pdf, EA)

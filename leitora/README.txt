@@ -1,0 +1,1 @@
+Onde deve conter todo o código fonte, scripts, arquivos de configuração e qualquer outro arquivo necessário para execução e implantação do sistema que simula a leitora dos cartões.
