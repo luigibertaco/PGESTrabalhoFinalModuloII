@@ -4,14 +4,14 @@ PGESTrabalhoFinalModuloII
 Trabalho Final do Módulo II
 
 Equipe
-=========================
+-------------------------
 Evandro Meurer
 Jonas Francisco D'Avila
 Luigi Bertaco Cristofolini
 Tiago Capistrano
 
 Cronograma de Entregas
-=========================
+-------------------------
 30/05/2014 - Entrevista com o cliente
 31/05/2014 - Criação de repositório e compartilhamento
 09/06/2014 - Entregar: 
