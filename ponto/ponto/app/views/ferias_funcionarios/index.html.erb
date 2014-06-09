@@ -13,7 +13,7 @@
   <tbody>
     <% @ferias_funcionarios.each do |ferias_funcionario| %>
       <tr>
-        <td><%= ferias_funcionario.funcionario %></td>
+        <td><%= ferias_funcionario.funcionario ? ferias_funcionario.funcionario.nome : 'Erro: Sem funcionario vinculado' %></td>
         <td><%= ferias_funcionario.data_inicio %></td>
         <td><%= ferias_funcionario.data_fim %></td>
         <td><%= link_to 'Show', ferias_funcionario %></td>
