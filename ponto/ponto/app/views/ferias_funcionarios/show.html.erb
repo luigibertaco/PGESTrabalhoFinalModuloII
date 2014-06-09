@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Funcionario:</strong>
+  <%= @ferias_funcionario.funcionario %>
+</p>
+
+<p>
+  <strong>Data inicio:</strong>
+  <%= @ferias_funcionario.data_inicio %>
+</p>
+
+<p>
+  <strong>Data fim:</strong>
+  <%= @ferias_funcionario.data_fim %>
+</p>
+
+<%= link_to 'Edit', edit_ferias_funcionario_path(@ferias_funcionario) %> |
+<%= link_to 'Back', ferias_funcionarios_path %>

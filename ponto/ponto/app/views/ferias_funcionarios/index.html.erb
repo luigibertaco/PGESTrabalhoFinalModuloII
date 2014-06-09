@@ -1,0 +1,29 @@
+<h1>Listing ferias_funcionarios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Funcionario</th>
+      <th>Data inicio</th>
+      <th>Data fim</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ferias_funcionarios.each do |ferias_funcionario| %>
+      <tr>
+        <td><%= ferias_funcionario.funcionario %></td>
+        <td><%= ferias_funcionario.data_inicio %></td>
+        <td><%= ferias_funcionario.data_fim %></td>
+        <td><%= link_to 'Show', ferias_funcionario %></td>
+        <td><%= link_to 'Edit', edit_ferias_funcionario_path(ferias_funcionario) %></td>
+        <td><%= link_to 'Destroy', ferias_funcionario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ferias funcionario', new_ferias_funcionario_path %>

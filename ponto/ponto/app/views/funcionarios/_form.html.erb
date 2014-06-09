@@ -20,8 +20,8 @@
     <%= f.check_box :ativo %>
   </div>
   <div class="field">
-    <%= f.label :setor %><br>
-    <%= f.collection_select :setor, Setor.all, :id, :descricao, {prompt: '--Selecione um setor--'} %>
+    <%= f.label :setor_id %><br>
+    <%= f.collection_select :setor_id, Setor.all, :id, :descricao, {prompt: '--Selecione um setor--'} %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  funcionario_id: 
+  data_inicio: 2014-06-09
+  data_fim: 2014-06-09
+
+two:
+  funcionario_id: 
+  data_inicio: 2014-06-09
+  data_fim: 2014-06-09

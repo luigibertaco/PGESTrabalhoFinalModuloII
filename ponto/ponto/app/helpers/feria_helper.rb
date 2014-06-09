@@ -1,0 +1,2 @@
+module FeriaHelper
+end

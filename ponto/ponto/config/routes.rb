@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :ferias_funcionarios
+
+  resources :feria
+
   resources :feriados
 
   resources :setors

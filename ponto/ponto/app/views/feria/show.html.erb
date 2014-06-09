@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Funcionario:</strong>
+  <%= @ferium.funcionario %>
+</p>
+
+<p>
+  <strong>Data inicio:</strong>
+  <%= @ferium.data_inicio %>
+</p>
+
+<p>
+  <strong>Data fim:</strong>
+  <%= @ferium.data_fim %>
+</p>
+
+<%= link_to 'Edit', edit_ferium_path(@ferium) %> |
+<%= link_to 'Back', feria_path %>

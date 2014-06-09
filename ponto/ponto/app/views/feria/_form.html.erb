@@ -1,0 +1,29 @@
+<%= form_for(@ferium) do |f| %>
+  <% if @ferium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ferium.errors.count, "error") %> prohibited this ferium from being saved:</h2>
+
+      <ul>
+      <% @ferium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :funcionario_id %><br>
+    <%= f.text_field :funcionario_id %>
+  </div>
+  <div class="field">
+    <%= f.label :data_inicio %><br>
+    <%= f.date_select :data_inicio %>
+  </div>
+  <div class="field">
+    <%= f.label :data_fim %><br>
+    <%= f.date_select :data_fim %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

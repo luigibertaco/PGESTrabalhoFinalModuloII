@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140609125145) do
+ActiveRecord::Schema.define(version: 20140609153120) do
+
+  create_table "feria", force: true do |t|
+    t.integer  "funcionario_id"
+    t.date     "data_inicio"
+    t.date     "data_fim"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "feria", ["funcionario_id"], name: "index_feria_on_funcionario_id"
 
   create_table "feriados", force: true do |t|
     t.string   "descricao"
@@ -19,6 +29,16 @@ ActiveRecord::Schema.define(version: 20140609125145) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "ferias_funcionarios", force: true do |t|
+    t.integer  "funcionario_id"
+    t.date     "data_inicio"
+    t.date     "data_fim"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ferias_funcionarios", ["funcionario_id"], name: "index_ferias_funcionarios_on_funcionario_id"
 
   create_table "funcionarios", force: true do |t|
     t.string   "nome"

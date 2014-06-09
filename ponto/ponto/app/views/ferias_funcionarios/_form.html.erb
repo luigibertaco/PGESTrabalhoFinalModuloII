@@ -1,0 +1,29 @@
+<%= form_for(@ferias_funcionario) do |f| %>
+  <% if @ferias_funcionario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ferias_funcionario.errors.count, "error") %> prohibited this ferias_funcionario from being saved:</h2>
+
+      <ul>
+      <% @ferias_funcionario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :funcionario_id %><br>
+    <%= f.collection_select :funcionario_id, Funcionario.all, :id, :nome, {prompt: '--Selecione um funcionario--'} %>
+  </div>
+  <div class="field">
+    <%= f.label :data_inicio %><br>
+    <%= f.date_select :data_inicio %>
+  </div>
+  <div class="field">
+    <%= f.label :data_fim %><br>
+    <%= f.date_select :data_fim %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

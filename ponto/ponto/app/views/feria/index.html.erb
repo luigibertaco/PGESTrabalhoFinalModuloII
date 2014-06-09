@@ -1,0 +1,29 @@
+<h1>Listing feria</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Funcionario</th>
+      <th>Data inicio</th>
+      <th>Data fim</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feria.each do |ferium| %>
+      <tr>
+        <td><%= ferium.funcionario %></td>
+        <td><%= ferium.data_inicio %></td>
+        <td><%= ferium.data_fim %></td>
+        <td><%= link_to 'Show', ferium %></td>
+        <td><%= link_to 'Edit', edit_ferium_path(ferium) %></td>
+        <td><%= link_to 'Destroy', ferium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ferium', new_ferium_path %>
