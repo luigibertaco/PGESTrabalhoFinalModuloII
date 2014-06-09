@@ -22,8 +22,9 @@
                 </tr>
               </thead>
               <tbody>
+                <% @funcionarios.each do |funcionario| %>
                 <tr>
-                  <td><%= funcionario.funcionario_id %></td>
+                  <td><%= funcionario.id %></td>
                   <td><%= funcionario.nome %></td>
                   <td>Vendas</td>
                   <td style="color: green; font-weight:bold">+ 32:40</td>
@@ -32,6 +33,7 @@
                     <a class="btn btn-primary btn-xs" title="Pagar horas extras" data-toggle="modal" data-target="#horas_extras">                      <span class="glyphicon glyphicon-usd"></span>                                      </a>
                   </td>
                 </tr>
+                <% end %>
               </tbody>
             </table>
           </div>

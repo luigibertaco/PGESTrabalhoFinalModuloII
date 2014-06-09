@@ -16,7 +16,7 @@ Cronograma de Entregas
 31/05/2014 - Criação de repositório e compartilhamento
 
 09/06/2014 - Entregar: 
-  1. Termo de Abertura
+  1. Termo de Abertura &#10003; 
   2. Plano de Gerenciamento
   3. Backlog Inicial
   4. Sprint Backlog 1
