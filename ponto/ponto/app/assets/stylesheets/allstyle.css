@@ -1,0 +1,103 @@
+.row{
+  margin-top:40px;
+  padding: 0 10px;
+}
+
+.clickable{
+  cursor: pointer;   
+}
+
+.panel-heading div {
+  margin-top: -18px;
+  font-size: 15px;
+}
+
+.panel-heading div span{
+  margin-left:5px;
+}
+
+.panel-body{
+  display: none;
+}
+
+td.coluna_dir, th.coluna_dir{
+   text-align: right; 
+}
+
+.form-control{
+ height: 35px;
+}  
+
+/** Styles dos accordions **/
+
+.menu .accordion{
+   margin-bottom: 5px; 
+}
+
+.menu .accordion-heading {  position: relative; }
+.menu .accordion-heading .edit {
+    position: absolute;
+    top: 8px;
+    right: 30px; 
+}
+.menu .pendente { border-left: 4px solid #f38787; }
+.menu .reconhecido { border-left: 4px solid #65c465; }
+.menu .collapse.in { overflow: visible; }
+
+/** Styles do Modal **/
+
+.modal-body:not(.two-col) { padding:0px }
+.glyphicon-new-window { margin-left:5px; }
+.modal-body .radio,.modal-body .checkbox {margin-top: 0px;margin-bottom: 0px;}
+.modal-body .list-group {margin-bottom: 0;}
+.modal-body .row {margin-top:5px;}
+.margin-bottom-none { margin-bottom: 0; }
+.modal-body .radio label,.modal-body .checkbox label { display:block; }
+.modal-footer {margin-top: 0px;}
+@media screen and (max-width: 325px){
+    .btn-close {
+        margin-top: 5px;
+        width: 100%;
+    }
+    .btn-results {
+        margin-top: 5px;
+        width: 100%;
+    }
+    .btn-vote{
+        margin-top: 5px;
+        width: 100%;
+    }
+    
+}
+.modal-footer .btn+.btn {
+    margin-left: 0px;
+}
+.progress {
+    margin-right: 10px;
+}
+
+/** GRID COM FILTRO SEPARADO POR COLUNA **/
+.filterable {
+    margin-top: 15px;
+}
+.filterable .panel-heading .pull-right {
+    margin-top: -20px;
+}
+.filterable .filters input[disabled] {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+    color: #333;
+}
+
