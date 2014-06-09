@@ -1,3 +1,45 @@
+<div class="container">
+      <div class="row">
+        <div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Funcion&aacute;rios</h3>
+              <div class="pull-right">
+                <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">  								<i class="glyphicon glyphicon-filter"></i>  							</span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <input type="text" class="form-control" id="task-table-filter" data-action="filter" data-filters="#task-table" placeholder="Filter Tasks">
+            </div>
+            <table class="table table-hover" id="task-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nome</th>
+                  <th>Setor</th>
+                  <th>Banco de Horas</th>
+                  <th style="text-align:right">Op&ccedil;&otilde;es</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= funcionario.funcionario_id %></td>
+                  <td><%= funcionario.nome %></td>
+                  <td>Vendas</td>
+                  <td style="color: green; font-weight:bold">+ 32:40</td>
+                  <td class="coluna_dir">
+                    <a class="btn btn-primary btn-xs" title="Abonar horas" data-toggle="modal" data-target="#abonar_horas">                      <span class="glyphicon glyphicon-thumbs-up"></span>                                      </a>
+                    <a class="btn btn-primary btn-xs" title="Pagar horas extras" data-toggle="modal" data-target="#horas_extras">                      <span class="glyphicon glyphicon-usd"></span>                                      </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--
 <h1>Listing funcionarios</h1>
 
 <table>
@@ -27,3 +69,4 @@
 <br>
 
 <%= link_to 'New Funcionario', new_funcionario_path %>
+-->
