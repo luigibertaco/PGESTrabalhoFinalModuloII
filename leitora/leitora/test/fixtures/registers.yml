@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data: 2014-06-06
+  hora: 2014-06-06 23:36:08
+  funcionario: 1
+
+two:
+  data: 2014-06-06
+  hora: 2014-06-06 23:36:08
+  funcionario: 1
