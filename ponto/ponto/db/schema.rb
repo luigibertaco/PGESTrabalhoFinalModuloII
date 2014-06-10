@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140609153120) do
+ActiveRecord::Schema.define(version: 20140610005858) do
 
   create_table "feria", force: true do |t|
     t.integer  "funcionario_id"
@@ -55,5 +55,16 @@ ActiveRecord::Schema.define(version: 20140609153120) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "usuarios", force: true do |t|
+    t.string   "username"
+    t.string   "senha"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tipo"
+    t.integer  "setor_id"
+  end
+
+  add_index "usuarios", ["setor_id"], name: "index_usuarios_on_setor_id"
 
 end
