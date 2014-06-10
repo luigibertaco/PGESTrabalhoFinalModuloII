@@ -17,11 +17,11 @@ Cronograma de Entregas
 
 09/06/2014 - Entregar: 
   1. Termo de Abertura &#10003; 
-  2. Plano de Gerenciamento
-  3. Backlog Inicial
-  4. Sprint Backlog 1
-  5. Prototipação
-  6. Arquivo "ponto.eap"
+  2. Plano de Gerenciamento &#10003; 
+  3. Backlog Inicial 
+  4. Sprint Backlog 1 
+  5. Prototipação &#10003; 
+  6. Arquivo "ponto.eap" &#10003; 
 
 14/06/2014 - Casos de teste 1 com apresentação do sprint 1
 
