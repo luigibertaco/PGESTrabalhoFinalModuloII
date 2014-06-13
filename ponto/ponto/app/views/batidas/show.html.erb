@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Funcionario:</strong>
+  <%= @batida.funcionario %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @batida.data %>
+</p>
+
+<p>
+  <strong>Hora:</strong>
+  <%= @batida.hora %>
+</p>
+
+<%= link_to 'Edit', edit_batida_path(@batida) %> |
+<%= link_to 'Back', batidas_path %>

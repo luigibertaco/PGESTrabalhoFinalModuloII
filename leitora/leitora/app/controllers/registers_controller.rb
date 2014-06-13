@@ -4,11 +4,11 @@ class RegistersController < ApplicationController
   # GET /registers
   # GET /registers.json
   def index
-    @registers = Register.all
+    @registers = Register.all.order('id DESC')
   end
 
   def getfirst
-    @register = Register.find_by_status(nil)
+    @register = Register.find_by(status: nil)
     if !@register.nil?
       @register.status = 'lido'
       @register.save

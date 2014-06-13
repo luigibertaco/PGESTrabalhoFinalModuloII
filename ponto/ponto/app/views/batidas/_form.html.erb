@@ -1,0 +1,29 @@
+<%= form_for(@batida) do |f| %>
+  <% if @batida.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@batida.errors.count, "error") %> prohibited this batida from being saved:</h2>
+
+      <ul>
+      <% @batida.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :funcionario_id %><br>
+    <%= f.text_field :funcionario_id %>
+  </div>
+  <div class="field">
+    <%= f.label :data %><br>
+    <%= f.date_select :data %>
+  </div>
+  <div class="field">
+    <%= f.label :hora %><br>
+    <%= f.time_select :hora %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :tipo %><br>
-    <%= f.text_field :tipo %>
+    <%= f.select :tipo, Usuario::TIPO.collect { |s, i| [i, s] }, {prompt: '--Selecione um tipo--'} %>
   </div>
   <div class="field">
     <%= f.label :setor_id %><br>

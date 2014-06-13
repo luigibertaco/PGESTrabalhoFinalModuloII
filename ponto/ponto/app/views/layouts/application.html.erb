@@ -7,11 +7,9 @@
     <meta name="viewport" content="width=device-width">
     <title>Ponto</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <% javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <% csrf_meta_tags %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <style type="text/css">
       body {
         padding-top: 20px;
@@ -26,6 +24,7 @@
       .jumbotron {
         /*text-align: center;*/
         background-color: transparent;
+        padding:0;
       }
       
       /* Customize the nav-justified links to be fill the entire space of the .navbar */
@@ -103,44 +102,60 @@
           padding-right: 0;
         }
       }
+      a.btn:visited 
+      {
+          text-decoration: none; 
+          decoration: none; 
+          color: white;
+      }
+      
     </style>
   </head>
   
   <body>
     <div class="container">
       <div class="masthead">
-        <div class="row" style="margin-top:10px">
+        <div class="row" style="margin-top:10px; height:70px">
           <div class="col-sm-3 col-md-3 col-lg-3">
             <%= image_tag('logo.png') %>
           </div>
           <div class="col-sm-9 col-md-9 col-lg-9" style="text-align:right">
-            <label class="form-label">Bem vindo Tiago Capistrano!</label>
-            <a class="btn btn-danger btn-xs" title="Editar" href="index.html">Sair</a>          </div>
+            <label class="form-label">Bem vindo <%= current_user.username.upcase %>! (Tipo da conta: <%= Usuario::TIPO[current_user.tipo] %> <%= current_user.tipo == 1 ? ' => ' + current_user.setor.descricao : '' %>)</label>
+            <%= link_to t('Sair'), user_sessions_path, method: :delete, class: 'btn btn-danger btn-xs' %>
+          </div>
         </div>
         <ul class="nav nav-justified" id="menu_principal">
-          <li class="active">
-            <a href="principal.html" style="">Principal</a>
+          <li class="<%= 'active' if params[:controller] == 'home' %>">
+            <%= link_to 'Principal', root_path %>
           </li>
-          <li>
+          <li class="<%= 'active' if params[:controller] == 'usuarios' %>">
             <%= link_to 'Usuários', usuarios_path %>
           </li>
-          <li>
+          <li class="<%= 'active' if params[:controller] == 'funcionarios' %>">
             <%= link_to 'Funcionários', funcionarios_path %>
           </li>
-          <li>
-            <a href="divergencias.html" style="padding-left: 8px; padding-right: 8px">Diverg&ecirc;ncias</a>
+          <li class="disabled">
+            <a href="#" style="padding-left: 8px; padding-right: 8px">Diverg&ecirc;ncias</a>
           </li>
-          <li>
-            <a href="inconsistencias.html" style="padding-left: 8px; padding-right: 8px">Inconsist&ecirc;ncias</a>
+          <li class="disabled">
+            <a href="#" style="padding-left: 8px; padding-right: 8px">Inconsist&ecirc;ncias</a>
           </li>
-          <li>
-            <a href="horaspagar.html" style="padding-left: 8px; padding-right: 8px">Horas&nbsp;&agrave;&nbsp;Pagar</a>
+          <li class="disabled">
+            <a href="#" style="padding-left: 8px; padding-right: 8px">Horas&nbsp;&agrave;&nbsp;Pagar</a>
           </li>
-          <li>
-            <a href="relatorios.html" style="padding-left: 8px; padding-right: 8px">Relat&oacute;rios</a>
+          <li class="<%= 'active' if params[:controller] == 'relatorios' %>">
+            <%= link_to 'Relatórios', relatorios_path %>
           </li>
         </ul>
         <div class="jumbotron">
+          <% if notice.present? %>
+            <div class="alert alert-info"><%= notice %></div>
+          <% end %>
+
+          <% if alert.present? %>
+            <div class="alert alert-warning"><%= alert %></div>
+          <% end %>
+          
           <%= yield %>
         </div>
       </div>

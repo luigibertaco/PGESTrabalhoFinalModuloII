@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :batidas
+
   resources :usuarios
 
   resources :ferias_funcionarios
@@ -10,7 +12,14 @@ Rails.application.routes.draw do
   resources :setors
 
   resources :funcionarios
+  
+  resources :relatorios
 
+  root 'home#index'
+  get 'importabatidas' => 'home#importabatidas'
+  
+  resource :user_sessions, only: [:create, :new, :destroy]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

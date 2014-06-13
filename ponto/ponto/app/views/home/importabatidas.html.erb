@@ -1,0 +1,12 @@
+<h2>Batidas importadas:</h2>  
+
+<% @batidas.each do |batida| 
+	f ||= Funcionario.find_by_id(batida['funcionario']) 
+%>
+<p>
+* Funcionário: 
+<%= f ? f.nome : '--Nao Cadastrado--' %>
+ - Data: <%= batida['data'] %>
+ - Hora: <%= batida['hora'].to_time.strftime("%H:%M:%S") %>
+</p>
+<% end %> 

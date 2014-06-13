@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610005858) do
+ActiveRecord::Schema.define(version: 20140612181617) do
+
+  create_table "batidas", force: true do |t|
+    t.integer  "funcionario_id"
+    t.date     "data"
+    t.time     "hora"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "batidas", ["funcionario_id"], name: "index_batidas_on_funcionario_id"
 
   create_table "feria", force: true do |t|
     t.integer  "funcionario_id"

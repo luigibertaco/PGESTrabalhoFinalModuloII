@@ -1,0 +1,29 @@
+<h1>Listing batidas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Funcionario</th>
+      <th>Data</th>
+      <th>Hora</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @batidas.each do |batida| %>
+      <tr>
+        <td><%= batida.funcionario.nome %></td>
+        <td><%= batida.data %></td>
+        <td><%= batida.hora %></td>
+        <td><%= link_to 'Show', batida %></td>
+        <td><%= link_to 'Edit', edit_batida_path(batida) %></td>
+        <td><%= link_to 'Destroy', batida, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Batida', new_batida_path %>
