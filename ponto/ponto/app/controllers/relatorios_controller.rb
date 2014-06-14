@@ -6,6 +6,7 @@ class RelatoriosController < ApplicationController
   end
   
   def executa
+  	@setors = Setor.all
     render :bancohoras, layout: false
   end
   

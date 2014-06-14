@@ -24,6 +24,13 @@
             </tr>
         </thead>
         <tbody>
+            <% @setors.each do |s| %>
+                <tr>
+                    <td colspan="6">
+                        <h2><%= s.descricao %></h2>
+                    </td>
+                </tr>
+            <% end %>
             <tr>
                 <td colspan="6">
                   <span style="font-weight:bold">Funcionário:</span>&nbsp;#1 Maria das Dores
