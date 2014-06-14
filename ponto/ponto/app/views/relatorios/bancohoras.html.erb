@@ -32,7 +32,11 @@
                         <h4><%= s.descricao %></h4>
                     </td>
                 </tr>
-                <% s.funcionarios.each do |f| %>
+                <% s.funcionarios.each do |f| 
+                    datanula = 3.hours.to_i
+                    saldofun = 0.hours
+                %>
+
                     <tr>
                         <td style="padding-left:30px" colspan="6">
                           <span style="font-weight:bold">Funcionário:</span>&nbsp;<%= "##{f.id} #{f.nome}" %>
@@ -44,8 +48,25 @@
                             entrada = nil
                             saida = nil
                             saldo_dia = 0
+                            esperado = datanula + 8.hours.to_i
                         %>
-                        <tr class="<%= d.wday == 0 || d.wday == 6 ? 'warning' : '' %> <%= Feriado.where(data: d).any? ? 'danger' : '' %>">
+                        <tr class="
+                            <% if d.wday == 0 || d.wday == 6 
+                                esperado = datanula
+                            %> 
+                                'warning'
+                            <% end %> 
+                            <% if Feriado.where(data: d).any? 
+                                esperado = datanula
+                            %>
+                                'danger'
+                            <% end %> 
+                            <% if d.in? f.todasferias 
+                                esperado = datanula
+                            %>
+                                'info' 
+                            <% end %>
+                            ">
                             <td style="padding-left:60px"><%= d.strftime("%d/%m/%Y") %></td>
                             <td>
                                 <% f.batidas.where(data: d).order(:hora).each do |b| %>
@@ -61,10 +82,12 @@
                                     %>
                                 <% end %>
                             </td>
-                            <td>xx:xx</td>
+                            <td><%= Time.at(esperado.to_i - datanula.to_i).utc.strftime("%H:%M") %></td>
                             <td><%= Time.at(saldo_dia.to_i.abs).utc.strftime("%H:%M") %></td>
-                            <td>+ xx:xx</td>
-                            <td>+ xx:xx</td>
+                            <% diferenca = esperado.to_i - saldo_dia.to_i - datanula.to_i %>
+                            <td><%= Time.at(diferenca.abs).utc.strftime("%H:%M") %></td>
+                            <% saldofun = saldofun + diferenca %>
+                            <td><%= Time.at(saldofun.to_i.abs).utc.strftime("%r:%M") %></td>
                         </tr>
                     <% } %>
                 <% end %>
