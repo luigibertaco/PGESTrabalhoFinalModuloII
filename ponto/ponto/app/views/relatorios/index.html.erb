@@ -1,4 +1,5 @@
 <div class="container">
+  <%= form_tag("/relatorios/executa", :method => "get", :target => "_blank") do %>
       <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-6">
           <label class="form-label">Relat&oacute;rio:</label>
@@ -11,10 +12,9 @@
         <div class="col-sm-6 col-md-6 col-lg-6">
           <label class="form-label">Setor:</label>
           <select class="form-control">
-            <option>Todos</option>
-            <option>Vendas</option>
-            <option>Compras</option>
-            <option>Tecnologia</option>
+            <%= @setors.each do |setor| %>
+                <option value="<%= setor.id %>"><%= setor.descricao %></option>
+             <% end %>
           </select>
         </div>
       </div>
@@ -70,4 +70,6 @@
           <a class="btn btn-primary" href="bancohoras.html">Emitir relat&oacute;rio</a>
         </div>
       </div>
-    </div>
+      <%= submit_tag("Generate Report") %>
+  <% end %>
+</div>

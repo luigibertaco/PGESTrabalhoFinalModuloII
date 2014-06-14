@@ -13,6 +13,10 @@ class Usuario < ActiveRecord::Base
     tipo.in? [0]
   end
   
+  def rh?
+    tipo.in? [2]
+  end
+  
   def self.authenticate(username, password)
     user = Usuario.find_by(username: username, senha: password)
 	end

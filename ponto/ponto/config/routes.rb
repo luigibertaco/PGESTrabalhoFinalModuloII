@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'importabatidas' => 'home#importabatidas'
+  get 'relatorios/executa' => 'relatorios#executa'
   
   resource :user_sessions, only: [:create, :new, :destroy]
   
