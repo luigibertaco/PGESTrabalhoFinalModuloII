@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_tag("/relatorios/executa", :method => "get", :target => "_blank") do %>
+  <%= form_tag("/executarelatorio", :method => "get", :target => "_blank") do %>
       <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-6">
           <label class="form-label">Relat&oacute;rio:</label>
@@ -33,8 +33,8 @@
         <div class="col-sm-4 col-md-4 col-lg-4">
           <label class="form-label">Data inicial:</label>
           <div class="form-group">
-            <div class="input-group date" id="datainicial">
-              <input type="text" class="form-control">
+            <div class="input-group date">
+              <%= text_field_tag 'datainicial', '', maxlength: 10, size: 20, class: "form-control" %>
               <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
           </div>
@@ -51,8 +51,8 @@
         <div class="col-sm-4 col-md-4 col-lg-4">
           <label class="form-label">Data final:</label>
           <div class="form-group">
-            <div class="input-group date" id="datafinal">
-              <input type="text" class="form-control">
+            <div class="input-group date">
+              <%= text_field_tag 'datafinal', '', maxlength: 10, size: 20, class: "form-control" %>
               <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
           </div>
@@ -67,9 +67,8 @@
       </div>
       <div class="row" style="margin-top:10px">
         <div class="col-md-4">
-          <a class="btn btn-primary" href="bancohoras.html">Emitir relat&oacute;rio</a>
+          <%= submit_tag "Gerar Relatório", class: "btn btn-primary" %>
         </div>
       </div>
-      <%= submit_tag("Generate Report") %>
   <% end %>
 </div>
