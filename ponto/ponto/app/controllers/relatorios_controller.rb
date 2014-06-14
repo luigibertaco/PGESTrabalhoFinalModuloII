@@ -6,6 +6,8 @@ class RelatoriosController < ApplicationController
   end
   
   def executa
+  	@datainicial = params[:datainicial]
+  	@datafinal = params[:datafinal]
   	@setors = Setor.all
     render :bancohoras, layout: false
   end
