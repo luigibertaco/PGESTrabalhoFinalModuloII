@@ -50,23 +50,21 @@
                             saldo_dia = 0
                             esperado = datanula + 8.hours.to_i
                         %>
-                        <tr class="
-                            <% if d.wday == 0 || d.wday == 6 
-                                esperado = datanula
-                            %> 
-                                'warning'
-                            <% end %> 
-                            <% if Feriado.where(data: d).any? 
+                        <tr class="<% if Feriado.where(data: d).any? 
                                 esperado = datanula
                             %>
-                                'danger'
+                                danger
                             <% end %> 
+                            <% if d.wday.in? [0,6]
+                                esperado = datanula
+                            %> 
+                                warning
+                            <% end %>
                             <% if d.in? f.todasferias 
                                 esperado = datanula
                             %>
-                                'info' 
-                            <% end %>
-                            ">
+                                info 
+                            <% end %>">
                             <td style="padding-left:60px"><%= d.strftime("%d/%m/%Y") %></td>
                             <td>
                                 <% f.batidas.where(data: d).order(:hora).each do |b| %>
@@ -87,7 +85,7 @@
                             <% diferenca = esperado.to_i - saldo_dia.to_i - datanula.to_i %>
                             <td><%= Time.at(diferenca.abs).utc.strftime("%H:%M") %></td>
                             <% saldofun = saldofun + diferenca %>
-                            <td><%= Time.at(saldofun.to_i.abs).utc.strftime("%r:%M") %></td>
+                            <td><%= ((saldofun / 60) / 60).to_s.rjust(2, '0') %>:<%= ((saldofun / 60) % 60).to_s.rjust(2, '0') %></td>
                         </tr>
                     <% } %>
                 <% end %>
