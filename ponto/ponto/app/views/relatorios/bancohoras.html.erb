@@ -26,68 +26,33 @@
             </tr>
         </thead>
         <tbody>
+            <%
+            dia_anterior = @datainicial.to_date - 1.day
+            %>
             <% @setors.each do |s| %>
                 <tr>
                     <td colspan="6">
                         <h4><%= s.descricao %></h4>
                     </td>
                 </tr>
-                <% s.funcionarios.each do |f| 
-                    datanula = 3.hours.to_i
-                    saldofun = 0.hours
-                %>
-
+                <% s.funcionarios.each do |f| %>
                     <tr>
                         <td style="padding-left:30px" colspan="6">
                           <span style="font-weight:bold">Funcionário:</span>&nbsp;<%= "##{f.id} #{f.nome}" %>
-                          <span style="font-weight:bold;margin-left:20px">Saldo inicial:</span>&nbsp;xx:xx
+                          <span style="font-weight:bold;margin-left:20px">Saldo inicial:</span>&nbsp;
+                          <%= hora_formatada(saldo_total(f,dia_anterior)) %>
                         </td>
                     </tr>
-                    <% (@datainicial.to_date..@datafinal.to_date).map{ |d| %>
-                        <% 
-                            entrada = nil
-                            saida = nil
-                            saldo_dia = 0
-                            esperado = datanula + 8.hours.to_i
-                        %>
-                        <tr class="<% if Feriado.where(data: d).any? 
-                                esperado = datanula
-                            %>
-                                danger
-                            <% end %> 
-                            <% if d.wday.in? [0,6]
-                                esperado = datanula
-                            %> 
-                                warning
-                            <% end %>
-                            <% if d.in? f.todasferias 
-                                esperado = datanula
-                            %>
-                                info 
-                            <% end %>">
+                    <% (@datainicial.to_date..@datafinal.to_date).map do |d| %>
+                        <tr class="<%= classe_dia(f, d) %>">
                             <td style="padding-left:60px"><%= d.strftime("%d/%m/%Y") %></td>
-                            <td>
-                                <% f.batidas.where(data: d).order(:hora).each do |b| %>
-                                    <%= b.hora.strftime("%H:%M")  %> 
-                                    <%
-                                        if entrada.nil?
-                                            entrada = b.hora
-                                        else
-                                            saida = b.hora
-                                            saldo_dia += (saida - entrada)
-                                            entrada = nil
-                                        end
-                                    %>
-                                <% end %>
-                            </td>
-                            <td><%= Time.at(esperado.to_i - datanula.to_i).utc.strftime("%H:%M") %></td>
-                            <td><%= Time.at(saldo_dia.to_i.abs).utc.strftime("%H:%M") %></td>
-                            <% diferenca = esperado.to_i - saldo_dia.to_i - datanula.to_i %>
-                            <td><%= Time.at(diferenca.abs).utc.strftime("%H:%M") %></td>
-                            <% saldofun = saldofun + diferenca %>
-                            <td><%= ((saldofun / 60) / 60).to_s.rjust(2, '0') %>:<%= ((saldofun / 60) % 60).to_s.rjust(2, '0') %></td>
+                            <td><%= batidas_formatado(f, d) %></td>
+                            <td><%= hora_formatada(tempo_esperado(f, d)) %></td>
+                            <td><%= hora_formatada(total_dia(f, d)) %></td>
+                            <td><%= hora_formatada(saldo_dia(f, d)) %></td>
+                            <td><%= hora_formatada(saldo_total(f, d)) %></td>
                         </tr>
-                    <% } %>
+                    <% end %>
                 <% end %>
             <% end %>
            

@@ -1,6 +1,8 @@
 class FuncionariosController < ApplicationController
   before_action :set_funcionario, only: [:show, :edit, :update, :destroy]
 
+  helper DiaHelper
+
   # GET /funcionarios
   # GET /funcionarios.json
   def index

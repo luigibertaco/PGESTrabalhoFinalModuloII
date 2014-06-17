@@ -29,7 +29,7 @@
                   <td><%= link_to funcionario.id, funcionario %></td>
                   <td><%= funcionario.nome %></td>
                   <td><%= funcionario.setor ? funcionario.setor.descricao : '--nenhum--' %></td>
-                  <td style="color: green; font-weight:bold">+ 32:40</td>
+                  <td style="color: green; font-weight:bold"><%= hora_formatada(saldo_total(funcionario, Date.today)) %></td>
                   <td class="coluna_dir">
                     <a class="btn btn-primary btn-xs" title="Abonar horas" data-toggle="modal" data-target="#abonar_horas">                      
                       <span class="glyphicon glyphicon-thumbs-up"></span>                                      

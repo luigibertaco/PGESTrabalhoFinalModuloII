@@ -13,7 +13,7 @@
   <tbody>
     <% @batidas.each do |batida| %>
       <tr>
-        <td><%= batida.funcionario.nome %></td>
+        <td><%= batida.funcionario.nil? ? '' : batida.funcionario.nome %></td>
         <td><%= batida.data %></td>
         <td><%= batida.hora %></td>
         <td><%= link_to 'Show', batida %></td>

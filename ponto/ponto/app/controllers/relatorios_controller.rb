@@ -1,5 +1,6 @@
 class RelatoriosController < ApplicationController
   skip_before_action :usuario_responsavel
+  helper DiaHelper
   
   def index
     @setors = Setor.all
