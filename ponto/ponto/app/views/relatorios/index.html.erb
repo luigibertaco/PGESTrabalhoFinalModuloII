@@ -33,35 +33,39 @@
         <div class="col-sm-4 col-md-4 col-lg-4">
           <label class="form-label">Data inicial:</label>
           <div class="form-group">
-            <div class="input-group date">
-              <%= text_field_tag 'datainicial', '', maxlength: 10, size: 20, class: "form-control" %>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+              <%= text_field_tag 'datainicial', '', maxlength: 10, class: "form-control", readonly: true %>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
+				    <input type="hidden" id="dtp_input2" value="" /><br/>
           </div>
         </div>
-        <script type="text/javascript">
-          $(function() {
-            $('#datainicial').datetimepicker({
-              language: 'pt-BR'
-            });
-          });
-        </script>
       </div>
       <div class="row" style="margin-top:0px">
         <div class="col-sm-4 col-md-4 col-lg-4">
           <label class="form-label">Data final:</label>
           <div class="form-group">
-            <div class="input-group date">
-              <%= text_field_tag 'datafinal', '', maxlength: 10, size: 20, class: "form-control" %>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+              <%= text_field_tag 'datafinal', '', maxlength: 10, class: "form-control", readonly: true %>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
+				    <input type="hidden" id="dtp_input2" value="" /><br/>
           </div>
         </div>
         <script type="text/javascript">
           $(function() {
-            $('#datafinal').datetimepicker({
-              language: 'pt-BR'
-            });
+            $('.form_date').datetimepicker({
+                  language:  'pt-BR',
+                  weekStart: 1,
+                  todayBtn:  1,
+                  autoclose: 1,
+                  todayHighlight: 1,
+                  startView: 2,
+                  minView: 2,
+                  forceParse: 0
+              });
           });
         </script>
       </div>
