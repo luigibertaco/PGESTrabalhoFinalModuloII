@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   resources :funcionarios
   
   resources :relatorios
+  
+  resources :divergencias
+  
+  resources :inconsistencias
 
   root 'home#index'
   get 'importabatidas' => 'home#importabatidas'

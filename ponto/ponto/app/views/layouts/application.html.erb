@@ -134,11 +134,11 @@
           <li class="<%= 'active' if params[:controller] == 'funcionarios' %>">
             <%= link_to 'Funcionários', funcionarios_path %>
           </li>
-          <li class="disabled">
-            <a href="#" style="padding-left: 8px; padding-right: 8px">Diverg&ecirc;ncias</a>
+          <li class="<%= 'active' if params[:controller] == 'divergencias' %>">
+            <%= link_to 'Divergências', divergencias_path %>
           </li>
-          <li class="disabled">
-            <a href="#" style="padding-left: 8px; padding-right: 8px">Inconsist&ecirc;ncias</a>
+          <li class="<%= 'active' if params[:controller] == 'inconsistencias' %>">
+            <%= link_to 'Inconsistências', inconsistencias_path %>
           </li>
           <li class="disabled">
             <a href="#" style="padding-left: 8px; padding-right: 8px">Horas&nbsp;&agrave;&nbsp;Pagar</a>

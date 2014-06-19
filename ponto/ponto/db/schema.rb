@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612181617) do
+ActiveRecord::Schema.define(version: 20140618155241) do
 
   create_table "batidas", force: true do |t|
     t.integer  "funcionario_id"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20140612181617) do
     t.datetime "updated_at"
     t.integer  "tipo"
     t.integer  "setor_id"
+    t.boolean  "ativo"
   end
 
   add_index "usuarios", ["setor_id"], name: "index_usuarios_on_setor_id"

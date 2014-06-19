@@ -26,16 +26,16 @@
             </tr>
         </thead>
         <tbody>
-            <%
-            dia_anterior = @datainicial.to_date - 1.day
-            %>
+            <% dia_anterior = @datainicial.to_date.yesterday %>
             <% @setors.each do |s| %>
                 <tr>
                     <td colspan="6">
                         <h4><%= s.descricao %></h4>
                     </td>
                 </tr>
-                <% s.funcionarios.each do |f| %>
+                <% 
+                funcionarios = @funcionario.blank? ? s.funcionarios : s.funcionarios.where(id: @funcionario)
+                funcionarios.each do |f| %>
                     <tr>
                         <td style="padding-left:30px" colspan="6">
                           <span style="font-weight:bold">Funcionário:</span>&nbsp;<%= "##{f.id} #{f.nome}" %>
@@ -55,10 +55,9 @@
                     <% end %>
                 <% end %>
             <% end %>
-           
         </tbody>
-    </table>
+      </table>
     </div>
-</div>
   </body>
 </html>
+<%= @params %>

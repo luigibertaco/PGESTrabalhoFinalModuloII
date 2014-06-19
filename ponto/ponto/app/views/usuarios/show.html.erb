@@ -6,8 +6,13 @@
 </p>
 
 <p>
-  <strong>Senha:</strong>
-  <%= @usuario.senha %>
+  <strong>Ativo:</strong>
+  <%= @usuario.ativo ? 'Ativo' : 'Inativo' %>
+</p>
+
+<p>
+  <strong>Setor:</strong>
+  <%= @usuario.setor ? @usuario.setor.descricao : '--' %>
 </p>
 
 <%= link_to 'Edit', edit_usuario_path(@usuario) %> |

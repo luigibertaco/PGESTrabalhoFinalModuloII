@@ -40,7 +40,7 @@ module DiaHelper
 			false
 		elsif ferias?(funcionario,data)
 			false
-		elsif primeira_batida(funcionario) > data
+		elsif primeira_batida > data
 			false
 		else
 			true
@@ -79,7 +79,8 @@ module DiaHelper
 
 	def saldo_total(funcionario, data)
 		saldo_total = 0
-		data_inicio = primeira_batida(funcionario).nil? ? data : primeira_batida(funcionario)
+		primeira_batida = funcionario.batidas.order(:data).select(:data).first
+		data_inicio = primeira_batida.nil? ? data : primeira_batida.data
 		(data_inicio..data).each do |d|
 			saldo_total += saldo_dia(funcionario, d)
 		end
@@ -89,20 +90,15 @@ module DiaHelper
 	def hora_formatada(tempo)
 		horas = ((tempo / 60) / 60).to_i.to_s.rjust(2, '0') 
 		minutos = ((tempo / 60) % 60).to_i.to_s.rjust(2, '0')
-	    formatado = "#{horas}:#{minutos}"
-	    tempo > 0 ? "-#{formatado}" : "#{formatado}"
+    formatado = "#{horas}:#{minutos}"
+    tempo > 0 ? "-#{formatado}" : "#{formatado}"
 	end
   
-	def divergencia?(funcionario, data)
-		saldo_dia(funcionario, data) != 0
-	end
-
-	def inconsistencia?(funcionario, data)
-		batidas(funcionario, data).count != 4
-	end
-
-	def primeira_batida(funcionario)
-		primeira_batida = funcionario.batidas.order(:data).select(:data).first
-		primeira_batida.nil? ? Date.tomorrow : primeira_batida.data
-	end
+  def divergencia?(funcionario, data)
+    saldo_dia(funcionario, data) != 0
+  end
+  
+  def inconsistencia?(funcionario, data)
+    batidas(funcionario, data).count != 4
+  end
 end

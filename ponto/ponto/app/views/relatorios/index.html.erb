@@ -11,22 +11,13 @@
       <div class="row" style="margin-top:15px">
         <div class="col-sm-6 col-md-6 col-lg-6">
           <label class="form-label">Setor:</label>
-          <select class="form-control">
-            <%= @setors.each do |setor| %>
-                <option value="<%= setor.id %>"><%= setor.descricao %></option>
-             <% end %>
-          </select>
+          <%= collection_select :widget, :setor_id, Setor.all, :id, :descricao, {prompt: '--Todos--'}, class: 'form-control' %>
         </div>
       </div>
       <div class="row" style="margin-top:15px">
         <div class="col-sm-6 col-md-6 col-lg-6">
           <label class="form-label">Funcionário:</label>
-          <select class="form-control" disabled>
-            <option>Todos</option>
-            <option>João</option>
-            <option>Maria</option>
-            <option>Pedro</option>
-          </select>
+          <%= collection_select :widget, :funcionario_id, Funcionario.all, :id, :nome, {prompt: '--Todos--'}, class: 'form-control' %>
         </div>
       </div>
       <div class="row" style="margin-top:15px">
@@ -34,8 +25,7 @@
           <label class="form-label">Data inicial:</label>
           <div class="form-group">
             <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-              <%= text_field_tag 'datainicial', '', maxlength: 10, class: "form-control", readonly: true %>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+              <%= text_field_tag 'datainicial', '', maxlength: 10, class: "form-control", readonly: true, value: Date.today - 30 %>
 					    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
 				    <input type="hidden" id="dtp_input2" value="" /><br/>
@@ -47,8 +37,7 @@
           <label class="form-label">Data final:</label>
           <div class="form-group">
             <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-              <%= text_field_tag 'datafinal', '', maxlength: 10, class: "form-control", readonly: true %>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+              <%= text_field_tag 'datafinal', '', maxlength: 10, class: "form-control", readonly: true, value: Date.today %>
 					    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
 				    <input type="hidden" id="dtp_input2" value="" /><br/>

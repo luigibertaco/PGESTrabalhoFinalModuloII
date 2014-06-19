@@ -1,0 +1,57 @@
+<div class="container">
+      <div class="row">
+        <div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Inconsistências</h3>
+              <div class="pull-right">
+                <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">  								
+                  <i class="glyphicon glyphicon-filter"></i>  							
+                </span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <input type="text" class="form-control" id="task-table-filter" data-action="filter" data-filters="#task-table" placeholder="Filter Tasks">
+            </div>
+            <table class="table table-hover" id="task-table">
+              <thead>
+                <tr>
+                  <th>Funcionário</th>
+                  <th>Setor</th>
+                  <th>Data</th>
+                  <th>Batidas</th>
+                  <th>Saldo</th>
+                  <th style="text-align:right">Op&ccedil;&otilde;es</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#1 Maria das dores</td>
+                  <td>Compras</td>
+                  <td>18/06/2014</td>
+                  <td>[08:00, 12:30, 19:00]</td>
+                  <td>?</td>
+                  <td class="coluna_dir">
+                    <a class="btn btn-primary btn-xs" title="Editar" data-toggle="modal">                      
+                      <span class="glyphicon glyphicon glyphicon-pencil"></span>                                      
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#1 José da Cunha</td>
+                  <td>Vendas</td>
+                  <td>18/06/2014</td>
+                  <td>[08:00, 17:00]</td>
+                  <td style="color:red">-01:00</td>
+                  <td class="coluna_dir">
+                    <a class="btn btn-primary btn-xs" title="Editar" data-toggle="modal">                      
+                      <span class="glyphicon glyphicon glyphicon-pencil"></span>                                      
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>

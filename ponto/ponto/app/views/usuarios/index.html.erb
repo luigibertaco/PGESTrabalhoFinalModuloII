@@ -32,7 +32,7 @@
                   <td><%= usuario.username %></td>
                   <td><%= Usuario::TIPO[usuario.tipo] %></td>
                   <td><%= usuario.setor ? usuario.setor.descricao : "" %></td>
-                  <td>Ativo</td>
+                  <td><%= usuario.ativo ? 'Ativo' : 'Inativo' %></td>
                   <td class="coluna_dir">
                     <%= link_to "<span class=\"glyphicon glyphicon-pencil\"></span>".html_safe, 
                         edit_usuario_path(usuario), 

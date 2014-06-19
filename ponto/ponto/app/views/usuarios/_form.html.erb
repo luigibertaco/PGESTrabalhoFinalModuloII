@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :senha %><br>
-    <%= f.password_field :senha %>
+    <%= f.password_field :senha, value: @usuario.senha %>
   </div>
   <div class="field">
     <%= f.label :tipo %><br>
@@ -25,7 +25,11 @@
   </div>
   <div class="field">
     <%= f.label :setor_id %><br>
-    <%= f.collection_select :setor_id, Setor.all, :id, :descricao, {prompt: '--Selecione um setor--'} %>
+    <%= f.collection_select :setor_id, Setor.all, :id, :descricao, {include_blank: '-- Nenhum --'} %>
+  </div>
+  <div class="field">
+    <%= f.label :ativo %><br>
+    <%= f.check_box :ativo, default: true %>
   </div>
   <div class="actions">
     <%= f.submit %>
