@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Horas à pagar</h3>
+          <div class="pull-right">
+            <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">  								<i class="glyphicon glyphicon-filter"></i>  							</span>
+          </div>
+        </div>
+        <div class="panel-body">
+          <input type="text" class="form-control" id="task-table-filter" data-action="filter" data-filters="#task-table" placeholder="Filter Tasks">
+        </div>
+        <table class="table table-hover" id="task-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Setor</th>
+              <th>Horas à pagar</th>
+              <th>Solicitado em</th>
+              <th>Solicitado por</th>
+              <th style="text-align:right">Op&ccedil;&otilde;es</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Maria da Silva</td>
+              <td>Vendas</td>
+              <td style="color: green; font-weight:bold">05:40</td>
+              <td>01/06/2014</td>
+              <td>Michael Jacson</td>
+              <td class="coluna_dir">
+                <button title="Reconhecer pagamento" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip">
+                  <span class="glyphicon glyphicon-thumbs-up"></span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jo&atilde;o Santos</td>
+              <td>Vendas</td>
+              <td style="color: green; font-weight:bold">02:50</td>
+              <td>02/06/2014</td>
+              <td>Roberto Carlos</td>
+              <td class="coluna_dir">
+                <button title="Reconhecer pagamento" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip">
+                  <span class="glyphicon glyphicon-thumbs-up"></span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Roberto Neto</td>
+              <td>Tecnologia</td>
+              <td style="color: green; font-weight:bold">00:26</td>
+              <td>02/06/2014</td>
+              <td>Tiago Capistrano</td>
+              <td class="coluna_dir">
+                <button title="Reconhecer pagamento" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip">
+                  <span class="glyphicon glyphicon-thumbs-up"></span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Francisco da Silva</td>
+              <td>Tecnologia</td>
+              <td style="color: green; font-weight:bold">04:13</td>
+              <td>03/06/2014</td>
+              <td>Tiago Capistrano</td>
+              <td class="coluna_dir">
+                <button title="Reconhecer pagamento" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip">
+                  <span class="glyphicon glyphicon-thumbs-up"></span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Tiago Sandler</td>
+              <td>Compras</td>
+              <td style="color: green; font-weight:bold">01:58</td>
+              <td>01/06/2014</td>
+              <td>Luigi Bertaco Cristofolini</td>
+              <td class="coluna_dir">
+                <button title="Reconhecer pagamento" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip">
+                  <span class="glyphicon glyphicon-thumbs-up"></span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

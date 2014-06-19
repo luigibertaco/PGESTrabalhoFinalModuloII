@@ -140,8 +140,8 @@
           <li class="<%= 'active' if params[:controller] == 'inconsistencias' %>">
             <%= link_to 'Inconsistências', inconsistencias_path %>
           </li>
-          <li class="disabled">
-            <a href="#" style="padding-left: 8px; padding-right: 8px">Horas&nbsp;&agrave;&nbsp;Pagar</a>
+          <li class="<%= 'active' if params[:controller] == 'pagar' %>">
+            <a href="pagar">Horas à Pagar</a>
           </li>
           <li class="<%= 'active' if params[:controller] == 'relatorios' %>">
             <%= link_to 'Relatórios', relatorios_path %>

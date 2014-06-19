@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :divergencias
   
   resources :inconsistencias
+  
+  resources :pagar
 
   root 'home#index'
   get 'importabatidas' => 'home#importabatidas'
