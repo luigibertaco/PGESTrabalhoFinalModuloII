@@ -30,7 +30,7 @@ module DiaHelper
 	end
 
 	def batidas(funcionario, data)
-		funcionario.batidas.where(data: data).order(:hora).all
+		funcionario.batidas.where(data: data).order('time(hora)').all
 	end
 
 	def dia_util?(funcionario, data)
@@ -70,11 +70,11 @@ module DiaHelper
 	end
 
 	def saldo_dia(funcionario, data)
-    resto = tempo_esperado(funcionario, data) + total_dia(funcionario, data)
-    if resto >= 0 && resto <= 20.minutes
-    	resto = 0
-    end
-    resto
+	    resto = total_dia(funcionario, data) - tempo_esperado(funcionario, data)
+	    if resto <= 0 && resto >= -20.minutes
+	    	resto = 0
+	    end
+	    resto
 	end
 
 	def saldo_total(funcionario, data)
@@ -87,10 +87,10 @@ module DiaHelper
 	end
 
 	def hora_formatada(tempo)
-		horas = ((tempo / 60) / 60).to_i.to_s.rjust(2, '0') 
-		minutos = ((tempo / 60) % 60).to_i.to_s.rjust(2, '0')
+		horas = (tempo.abs / 60 / 60).to_i.to_s.rjust(2, '0') 
+		minutos = (tempo.abs / 60 % 60).to_i.to_s.rjust(2, '0')
 	    formatado = "#{horas}:#{minutos}"
-	    tempo > 0 ? "-#{formatado}" : "#{formatado}"
+	    tempo >= 0.hours ? "#{formatado}" : "-#{formatado}"
 	end
   
 	def divergencia?(funcionario, data)
