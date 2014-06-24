@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require bootstrap
 //= require bootstrap-datetimepicker
 //= require bootstrap-datetimepicker.pt-BR
 //= require zbootstrap
