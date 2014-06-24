@@ -25,30 +25,22 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>#1 Maria das dores</td>
-                  <td>Compras</td>
-                  <td>18/06/2014</td>
-                  <td>[08:00, 12:30, 14:00, 19:00]</td>
-                  <td style="color:green">+01:30</td>
+                <% @divergencias.each do |d| %>
+                <% d[1].each do |f| %>
+                <tr class="<%= classe_dia(f, d[0]) %>">
+                  <td><%= "##{f.id} #{f.nome}" %></td>
+                  <td><%= f.setor.descricao %></td>
+                  <td><%= d[0] %></td>
+                  <td><%= batidas_formatado(f,d[0]) %></td>
+                  <td style="<%= saldo_dia(f,d[0]) >= 0 ? 'color:green' : 'color:red' %>"><%= hora_formatada(saldo_dia(f, d[0])) %></td>
                   <td class="coluna_dir">
                     <a class="btn btn-primary btn-xs" title="Reconhecer" data-toggle="modal">                      
                       <span class="glyphicon glyphicon-thumbs-up"></span>                                      
                     </a>
                   </td>
                 </tr>
-                <tr>
-                  <td>#1 José da Cunha</td>
-                  <td>Vendas</td>
-                  <td>18/06/2014</td>
-                  <td>[08:00, 12:00, 14:00, 18:00]</td>
-                  <td style="color:red">-00:30</td>
-                  <td class="coluna_dir">
-                    <a class="btn btn-primary btn-xs" title="Reconhecer" data-toggle="modal">                      
-                      <span class="glyphicon glyphicon-thumbs-up"></span>                                      
-                    </a>
-                  </td>
-                </tr>
+                <% end %>
+                <% end %>
               </tbody>
             </table>
           </div>

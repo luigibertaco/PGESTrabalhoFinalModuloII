@@ -4,8 +4,8 @@ class HomeController < ApplicationController
   
   def importabatidas
     @batidas ||= []
-    #batida = RestClient.get 'http://colchonet-teste-120972.sae1.nitrousbox.com:4000/registers/getfirst.json'
-    batida = RestClient.get 'http://' + request.domain + ':4000/registers/getfirst.json'
+    batida = RestClient.get 'http://colchonet-teste-120972.sae1.nitrousbox.com:4000/registers/getfirst.json'
+    #batida = RestClient.get 'http://' + request.domain + ':4000/registers/getfirst.json'
     @ret = JSON.parse(batida)
     while !@ret['id'].nil?
       b = Batida.new
@@ -16,8 +16,8 @@ class HomeController < ApplicationController
       
       @batidas.push @ret
       
-      #batida = RestClient.get 'http://colchonet-teste-120972.sae1.nitrousbox.com:4000/registers/getfirst.json'
-      batida = RestClient.get 'http://' + request.domain + ':4000/registers/getfirst.json'
+      batida = RestClient.get 'http://colchonet-teste-120972.sae1.nitrousbox.com:4000/registers/getfirst.json'
+      #batida = RestClient.get 'http://' + request.domain + ':4000/registers/getfirst.json'
       @ret = JSON.parse(batida)
     end
   end
