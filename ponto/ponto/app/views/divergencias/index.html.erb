@@ -1,5 +1,10 @@
 <div class="container">
-      <div class="row">
+  <div class="row" style="margin-top:10px">
+        <span class="label label-warning">Fim de Semana</span>
+        <span class="label label-danger">Feriado</span>
+        <span class="label label-info">Férias</span>
+      </div>
+      <div class="row" style="margin-top:10px">
         <div>
           <div class="panel panel-primary">
             <div class="panel-heading">
@@ -34,9 +39,9 @@
                   <td><%= batidas_formatado(f,d[0]) %></td>
                   <td style="<%= saldo_dia(f,d[0]) >= 0 ? 'color:green' : 'color:red' %>"><%= hora_formatada(saldo_dia(f, d[0])) %></td>
                   <td class="coluna_dir">
-                    <a class="btn btn-primary btn-xs" title="Reconhecer" data-toggle="modal">                      
-                      <span class="glyphicon glyphicon-thumbs-up"></span>                                      
-                    </a>
+                      <%= link_to "<span class=\"glyphicon glyphicon-thumbs-up\"></span>".html_safe, 
+  {controller: 'divergencias', funcionario_id: f.id, data: d[0]}, data: {confirm: "Deseja reconhecer a divergência?"}, method: :post, class: "btn btn-primary btn-xs" %>
+                    
                   </td>
                 </tr>
                 <% end %>

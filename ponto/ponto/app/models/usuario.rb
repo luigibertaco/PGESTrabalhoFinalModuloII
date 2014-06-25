@@ -1,5 +1,6 @@
 class Usuario < ActiveRecord::Base
 	belongs_to :setor
+  has_many :divergencias
   
   TIPO = {0 => 'Administrador', 1 => 'Responsável por Setor', 2 => 'RH'}
   

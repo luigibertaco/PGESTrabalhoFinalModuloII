@@ -2,6 +2,7 @@ class Funcionario < ActiveRecord::Base
   belongs_to :setor
   has_many :ferias_funcionarios
   has_many :batidas
+  has_many :divergencias
 
   validates_presence_of :nome, :setor
 

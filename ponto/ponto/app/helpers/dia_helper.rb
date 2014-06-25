@@ -94,8 +94,12 @@ module DiaHelper
 	end
   
   def self.divergencia?(funcionario, data)
-    saldo_dia(funcionario, data) != 0
+    saldo_dia(funcionario, data) != 0 && !divergencia_reconhecida?(funcionario, data)
 	end
+  
+  def self.divergencia_reconhecida?(funcionario, data)
+    Divergencia.where(funcionario: funcionario, data: data).any?
+  end
 
   def self.inconsistencia?(funcionario, data)
 		batidas(funcionario, data).count != 4

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618155241) do
+ActiveRecord::Schema.define(version: 20140624220711) do
 
   create_table "batidas", force: true do |t|
     t.integer  "funcionario_id"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20140618155241) do
   end
 
   add_index "batidas", ["funcionario_id"], name: "index_batidas_on_funcionario_id"
+
+  create_table "divergencia", force: true do |t|
+    t.date     "data"
+    t.integer  "usuario_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "funcionario_id"
+  end
+
+  add_index "divergencia", ["funcionario_id"], name: "index_divergencia_on_funcionario_id"
+  add_index "divergencia", ["usuario_id"], name: "index_divergencia_on_usuario_id"
 
   create_table "feria", force: true do |t|
     t.integer  "funcionario_id"

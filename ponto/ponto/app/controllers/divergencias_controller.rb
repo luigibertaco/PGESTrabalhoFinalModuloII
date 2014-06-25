@@ -10,7 +10,7 @@ class DivergenciasController < ApplicationController
     else
       funcionarios = Funcionario.where(setor: current_user.setor)
     end
-    (data_inicial..Date.today).map do |dia|
+    (data_inicial..Date.yesterday).map do |dia|
       funcionarios_divergencia ||= []
       funcionarios.each do |f|
         if DiaHelper.divergencia?(f,dia) && !DiaHelper.inconsistencia?(f,dia)
@@ -21,5 +21,15 @@ class DivergenciasController < ApplicationController
     end
     @divergencias
   end
+
+  def create
+    d = Divergencia.new
+    d.funcionario_id = params[:funcionario_id]
+    d.data = params[:data]
+    d.usuario = current_user
+    d.save
+    redirect_to :divergencias
+  end
+
 end
   

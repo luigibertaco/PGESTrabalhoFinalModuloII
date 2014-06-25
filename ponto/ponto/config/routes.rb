@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'importabatidas' => 'home#importabatidas'
   get 'executarelatorio' => 'relatorios#executa'
   
+  
   resource :user_sessions, only: [:create, :new, :destroy]
   
   # The priority is based upon order of creation: first created -> highest priority.
