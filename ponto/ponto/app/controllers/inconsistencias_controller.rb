@@ -1,5 +1,5 @@
 class InconsistenciasController < ApplicationController
-  before_action :set_inconsistencia, only: [:show, :edit, :update, :destroy]
+  #before_action :set_inconsistencia, only: [:show, :edit, :update, :destroy]
   helper DiaHelper
   
   def index
@@ -20,6 +20,11 @@ class InconsistenciasController < ApplicationController
       @divergencias.push([dia,funcionarios_divergencia])
     end
     @divergencias
+  end
+
+  def show
+    @params = params
+    @batidas = Batida.where(data: params[:data], funcionario_id: params[:funcionario]).order('time(hora)')
   end
 end
   

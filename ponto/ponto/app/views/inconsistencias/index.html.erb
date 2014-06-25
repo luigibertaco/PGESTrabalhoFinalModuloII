@@ -39,9 +39,7 @@
                   <td><%= batidas_formatado(f,d[0]) %></td>
                   <td style="<%= saldo_dia(f,d[0]) >= 0 ? 'color:green' : 'color:red' %>"><%= hora_formatada(saldo_dia(f, d[0])) %></td>
                   <td class="coluna_dir">
-                    <a class="btn btn-primary btn-xs" title="Ajustar" data-toggle="modal">                      
-                      <span class="glyphicon glyphicon-pencil"></span>                                      
-                    </a>
+                    <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, {controller: 'inconsistencias', action: 'ajustar', funcionario: f, data: d[0]}, class: "btn btn-primary btn-xs" %>
                   </td>
                 </tr>
                 <% end %>
