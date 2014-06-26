@@ -4,7 +4,7 @@ class InconsistenciasController < ApplicationController
   
   def index
     @divergencias ||= []
-    data_inicial = Batida.order(:data).all.any? ?  Date.today : Batida.order(:data).all.first.data
+    data_inicial = Batida.order(:data).all.any? ? Batida.order(:data).all.first.data : Date.today
     if current_user.administrador?
       funcionarios = Funcionario.all 
     else
