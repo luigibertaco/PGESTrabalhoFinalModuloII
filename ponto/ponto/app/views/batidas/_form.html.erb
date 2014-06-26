@@ -12,13 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :funcionario_id %><br>
-    <%= f.text_field :funcionario_id %>
+    <h3><%= @batida.data %> - <%= @batida.funcionario.nome %></h3>
   </div>
-  <div class="field">
-    <%= f.label :data %><br>
-    <%= f.date_select :data %>
-  </div>
+  <%= f.hidden_field :data, value: @batida.data %>
+  <%= f.hidden_field :funcionario_id, value: @batida.funcionario_id %>
   <div class="field">
     <%= f.label :hora %><br>
     <%= f.time_select :hora %>
@@ -27,3 +24,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+<br>
+<%= link_to 'Voltar', {controller: 'inconsistencias', action: 'ajustar', funcionario: @batida.funcionario, data: @batida.data}, method: :post %>

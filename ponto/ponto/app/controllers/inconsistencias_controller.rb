@@ -4,7 +4,7 @@ class InconsistenciasController < ApplicationController
   
   def index
     @divergencias ||= []
-    data_inicial = Batida.order(:data).all.first.nil? ?  Date.today : Batida.order(:data).all.first.data
+    data_inicial = Batida.order(:data).all.any? ?  Date.today : Batida.order(:data).all.first.data
     if current_user.administrador?
       funcionarios = Funcionario.all 
     else
@@ -22,9 +22,11 @@ class InconsistenciasController < ApplicationController
     @divergencias
   end
 
-  def show
-    @params = params
+  def ajustar
     @batidas = Batida.where(data: params[:data], funcionario_id: params[:funcionario]).order('time(hora)')
+    @data = params[:data]
+    @funcionario = Funcionario.find(params[:funcionario])
+    render :show
   end
 end
   

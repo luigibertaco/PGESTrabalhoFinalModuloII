@@ -102,13 +102,21 @@ module DiaHelper
   end
 
   def self.inconsistencia?(funcionario, data)
-		batidas(funcionario, data).count != 4
-	end
+		batidas(funcionario, data).count != 4 && divergencia?(funcionario, data)
+  end
+
+  def self.batidas_par?(funcionario, data)
+  	batidas(funcionario, data).count % 2 == 0
+  end
 
   def self.primeira_batida(funcionario)
 		primeira_batida = funcionario.batidas.order(:data).select(:data).first
 		primeira_batida.nil? ? Date.tomorrow : primeira_batida.data
 	end
+  
+  def batidas_par?(funcionario, data)
+  	DiaHelper.batidas_par?(funcionario, data)
+  end
   
   def saldo_dia(funcionario, data)
     DiaHelper.saldo_dia(funcionario, data)

@@ -1,5 +1,6 @@
 class BatidasController < ApplicationController
   before_action :set_batida, only: [:show, :edit, :update, :destroy]
+  helper DiaHelper
 
   # GET /batidas
   # GET /batidas.json
@@ -15,6 +16,8 @@ class BatidasController < ApplicationController
   # GET /batidas/new
   def new
     @batida = Batida.new
+    @batida.funcionario_id = params[:funcionario]
+    @batida.data = params[:data]
   end
 
   # GET /batidas/1/edit
@@ -25,40 +28,39 @@ class BatidasController < ApplicationController
   # POST /batidas.json
   def create
     @batida = Batida.new(batida_params)
-
-    respond_to do |format|
-      if @batida.save
-        format.html { redirect_to @batida, notice: 'Batida was successfully created.' }
-        format.json { render :show, status: :created, location: @batida }
-      else
-        format.html { render :new }
-        format.json { render json: @batida.errors, status: :unprocessable_entity }
-      end
+    if @batida.save
+      @data = @batida.data
+      @funcionario = @batida.funcionario
+      @batidas = Batida.where(data: @data, funcionario: @funcionario).order('time(hora)')
+      render 'inconsistencias/show', notice: 'Batida criada com sucesso' 
+    else
+      render :new 
     end
   end
 
   # PATCH/PUT /batidas/1
   # PATCH/PUT /batidas/1.json
   def update
-    respond_to do |format|
+    
       if @batida.update(batida_params)
-        format.html { redirect_to @batida, notice: 'Batida was successfully updated.' }
-        format.json { render :show, status: :ok, location: @batida }
+        @data = @batida.data
+        @funcionario = @batida.funcionario
+        @batidas = Batida.where(data: @data, funcionario: @funcionario).order('time(hora)')
+        render 'inconsistencias/show', notice: 'Batida alterada com sucesso'
       else
-        format.html { render :edit }
-        format.json { render json: @batida.errors, status: :unprocessable_entity }
+        render :edit 
       end
-    end
+    
   end
 
   # DELETE /batidas/1
   # DELETE /batidas/1.json
   def destroy
-    @batida.destroy
-    respond_to do |format|
-      format.html { redirect_to batidas_url, notice: 'Batida was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      @batida.destroy
+      @data = @batida.data
+      @funcionario = @batida.funcionario
+      @batidas = Batida.where(data: @data, funcionario: @funcionario).order('time(hora)')
+      render 'inconsistencias/show', notice: 'Batida excluida com sucesso' 
   end
 
   private

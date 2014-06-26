@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :divergencias
   
   resources :inconsistencias
+  post 'inconsistencias/ajustar' => 'inconsistencias#ajustar'
   
   resources :pagar
 
