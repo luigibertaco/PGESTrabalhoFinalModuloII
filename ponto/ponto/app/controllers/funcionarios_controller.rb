@@ -7,9 +7,9 @@ class FuncionariosController < ApplicationController
   # GET /funcionarios.json
   def index
     if current_user.administrador?
-      @funcionarios = Funcionario.all 
+      @funcionarios = Funcionario.where(ativo: true) 
     else
-      @funcionarios = Funcionario.where(setor: current_user.setor)
+      @funcionarios = Funcionario.where(setor: current_user.setor, ativo: true)
     end
   end
 

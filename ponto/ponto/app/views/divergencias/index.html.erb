@@ -39,9 +39,10 @@
                   <td><%= batidas_formatado(f,d[0]) %></td>
                   <td style="<%= saldo_dia(f,d[0]) >= 0 ? 'color:green' : 'color:red' %>"><%= hora_formatada(saldo_dia(f, d[0])) %></td>
                   <td class="coluna_dir">
+                      <% if !@rh %>
                       <%= link_to "<span class=\"glyphicon glyphicon-thumbs-up\"></span>".html_safe, 
-  {controller: 'divergencias', funcionario_id: f.id, data: d[0]}, data: {confirm: "Deseja reconhecer a divergência?"}, method: :post, class: "btn btn-primary btn-xs" %>
-                    
+  {controller: 'divergencias', funcionario_id: f.id, data: d[0], tipo: 'divergencias'}, data: {confirm: "Deseja reconhecer a divergência?"}, method: :post, class: "btn btn-primary btn-xs" %>
+                      <% end %>
                   </td>
                 </tr>
                 <% end %>

@@ -46,7 +46,7 @@
       </div>
       <% if batidas_par?(@funcionario, @data) %>
       <div class="row" style="margin-top:10px">
-        <%= link_to "Reconhecer divergência", {controller: 'divergencias', funcionario_id: @funcionario.id, data: @data, inconsistencia: true}, data: {confirm: "Deseja reconhecer a divergência?"}, method: :post, class: "btn btn-primary btn-xs" %>
+        <%= link_to "Reconhecer divergência", {controller: 'divergencias', funcionario_id: @funcionario.id, data: @data, tipo: 'inconsistencias'}, data: {confirm: "Deseja reconhecer a divergência?"}, method: :post, class: "btn btn-primary btn-xs" %>
       </div>
       <% end %>
 </div>

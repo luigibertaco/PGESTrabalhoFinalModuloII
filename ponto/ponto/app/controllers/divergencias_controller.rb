@@ -1,11 +1,12 @@
 class DivergenciasController < ApplicationController
   before_action :set_divergencia, only: [:show, :edit, :update, :destroy]
+  skip_before_action :usuario_responsavel
   helper DiaHelper
   
   def index
     @divergencias ||= []
-    data_inicial = Batida.order(:data).all.any? ? Batida.order(:data).all.first.data : Date.today
-    if current_user.administrador?
+    data_inicial = Batida.order(:data).all.any? ? Batida.order(:data).all.first.data : Date.yesterday
+    if current_user.administrador? || current_user.rh?
       funcionarios = Funcionario.all 
     else
       funcionarios = Funcionario.where(setor: current_user.setor)
@@ -19,7 +20,7 @@ class DivergenciasController < ApplicationController
       end
       @divergencias.push([dia,funcionarios_divergencia])
     end
-    @divergencias
+    @rh = current_user.rh?
   end
 
   def create
@@ -28,7 +29,11 @@ class DivergenciasController < ApplicationController
     d.data = params[:data]
     d.usuario = current_user
     d.save
-    redirect_to :divergencias
+    if params[:tipo] == 'divergencias'
+      redirect_to :divergencias
+    else
+      redirect_to :inconsistencias
+    end
   end
 
 end

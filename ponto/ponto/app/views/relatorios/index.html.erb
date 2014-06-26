@@ -11,13 +11,29 @@
       <div class="row" style="margin-top:15px">
         <div class="col-sm-6 col-md-6 col-lg-6">
           <label class="form-label">Setor:</label>
-          <%= collection_select :widget, :setor_id, Setor.all, :id, :descricao, {prompt: '--Todos--'}, class: 'form-control' %>
+          <%
+            if current_user.administrador? || current_user.rh? 
+              setores = Setor.all
+            else
+              setores = Setor.where(id: current_user.setor_id)
+            end
+          %>
+          <%= collection_select :widget, :setor_id, setores, :id, :descricao, {prompt: '--Todos--'}, class: 'form-control' %>
         </div>
       </div>
       <div class="row" style="margin-top:15px">
         <div class="col-sm-6 col-md-6 col-lg-6">
           <label class="form-label">Funcionário:</label>
-          <%= collection_select :widget, :funcionario_id, Funcionario.all, :id, :nome, {prompt: '--Todos--'}, class: 'form-control' %>
+          <%
+            if current_user.administrador?
+              funcionarios = Funcionario.where(ativo: true)
+            elsif current_user.rh?
+              funcionarios = Funcionario.all
+            else
+              funcionarios = Funcionario.where(setor_id: current_user.setor_id)
+            end
+          %>
+          <%= collection_select :widget, :funcionario_id, funcionarios, :id, :nome, {prompt: '--Todos--'}, class: 'form-control' %>
         </div>
       </div>
       <div class="row" style="margin-top:15px">

@@ -16,7 +16,11 @@ class RelatoriosController < ApplicationController
       setor = Funcionario.find(@funcionario).setor.id
     end
     if setor.blank?
-  	  @setors = Setor.all
+      if current_user.administrador? || current_user.rh?
+    	  @setors = Setor.all
+      else
+        @setors = Setor.where(id: current_user.setor_id)
+      end
     else
       @setors = Setor.where(id: setor).all
     end

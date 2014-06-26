@@ -4,7 +4,7 @@ class Usuario < ActiveRecord::Base
   
   TIPO = {0 => 'Administrador', 1 => 'Responsável por Setor', 2 => 'RH'}
   
-  validates_presence_of :username, :senha, :ativo
+  validates_presence_of :username, :senha
   validates_presence_of :setor, if: :somente_responsavel?
   validate :setor_nao_responsavel
 

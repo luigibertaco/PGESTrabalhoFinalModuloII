@@ -19,6 +19,7 @@
                   <th>#</th>
                   <th>Nome</th>
                   <th>Setor</th>
+                  <th></th>
                   <th>Banco de Horas</th>
                   <th style="text-align:right">Op&ccedil;&otilde;es</th>
                 </tr>
@@ -29,12 +30,13 @@
                   <td><%= link_to funcionario.id, funcionario %></td>
                   <td><%= funcionario.nome %></td>
                   <td><%= funcionario.setor ? funcionario.setor.descricao : '--nenhum--' %></td>
+                  <td><%= funcionario.ativo ? '' : 'inativo' %></td>
                   <td><%= hora_formatada(saldo_total(funcionario, Date.yesterday)) %></td>
                   <td class="coluna_dir">
-                    <a id='<%= funcionario.id %>' class="btn btn-primary btn-xs" title="Abonar horas" data-toggle="modal" data-target="#abonar_horas" onclick="setFuncionario('<%= funcionario.id %>','<%= funcionario.nome %>')">
+                    <a id='<%= funcionario.id %>' class="btn btn-primary btn-xs disabled" title="Abonar horas" data-toggle="modal" data-target="#abonar_horas" onclick="setFuncionario('<%= funcionario.id %>','<%= funcionario.nome %>')">
                       <span class="glyphicon glyphicon-thumbs-up"></span>                                      
                     </a>
-                    <a class="btn btn-primary btn-xs" title="Pagar horas extras" data-toggle="modal" data-target="#horas_extras">
+                    <a class="btn btn-primary btn-xs disabled" title="Pagar horas extras" data-toggle="modal" data-target="#horas_extras">
                       <span class="glyphicon glyphicon-usd"></span>                                      
                     </a>
                   </td>

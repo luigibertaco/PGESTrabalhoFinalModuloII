@@ -40,6 +40,9 @@
                 </tr>
                 <% 
                 funcionarios = @funcionario.blank? ? s.funcionarios : s.funcionarios.where(id: @funcionario)
+                unless current_user.rh?
+                  funcionarios = funcionarios.where(ativo: true)
+                end
                 funcionarios.each do |f| %>
                     <tr>
                         <td style="padding-left:30px" colspan="6">
@@ -65,4 +68,3 @@
     </div>
   </body>
 </html>
-<%= @params %>
