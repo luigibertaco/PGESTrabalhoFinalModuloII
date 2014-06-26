@@ -23,10 +23,10 @@ Cronograma de Entregas
   5. Prototipação &#10003; 
   6. Arquivo "ponto.eap" &#10003; 
 
-14/06/2014 - Casos de teste 1 com apresentação do sprint 1
+14/06/2014 - Casos de teste 1 com apresentação do sprint 1 &#10003; 
 
 25/06/2014 - Entregar:
-  1. Arquivo "ponto_v2.eap"
-  2. Sprint Backlog 2
+  1. Arquivo "ponto_v2.eap" &#10003; 
+  2. Sprint Backlog 2 &#10003; 
 
 28/06/2014 - Casos de teste 2 com apresentação do sprint 2
